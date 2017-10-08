@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+   <!--  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+    <script src="https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css" rel="stylesheet" />
+    <style>
+      #map{
+        position: absolute; top:0; left:0; bottom:0; right:0; width:100%; 
+      }
+      #gender-form {
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+      }
+    </style> -->
+  </head>
+  
+  <body>
+
+<!--     <form action="/app.py" method="post">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="user_name">
+        </div>
+        <div>
+            <label for="mail">E-mail:</label>
+            <input type="email" id="mail" name="user_mail">
+        </div>
+        <div>
+            <label for="msg">Message:</label>
+            <textarea id="msg" name="user_message"></textarea>
+        </div>
+    </form> -->
+   <!--  <div class="grrform-style-6">
+        <h1>Contact Us</h1>
+        <form> action = ""
+            <input type="text" name="field1" placeholder="Your Name" />
+            <input type="email" name="field2" placeholder="Email Address" />
+            <textarea name="field3" placeholder="Type your Message"></textarea>
+            <input type="submit" value="Send" />
+        </form>-->
+    
+    <form id="gender-form" action="/send" method ="post">
+          Gender:
+        
+              <select name="gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Neutral">Neutral</option>            </select>
+
+          <input type="submit" value="submit">
+    </form>
+
+
+    <!--<div id="map" ></div>
+    <script>-->
+
+<!--         // $.ajax({
+        //   url: "localhost:5000",
+        //   method: "post",
+        //   data: "",
+        // }).done(function(resp) {
+        //   debugger
+        // });
+
+        
+
+        var newMarker = "";
+
+        fetch("http://localhost:5000", {method: "post", body: ""})
+        .then(function(res) { 
+          res.json().then(function(json) {
+            newMarker = json['Coordinates'];
+          }) 
+        });
+
+        console.log(newMarker);
+
+
+
+        var map = L.Wrld.map("map", "fca1f11a8b45fcca9f53fe023053ab95", {
+        //center: [37.870253, -122.259539],
+        zoom: 18
+        });       
+
+        //   var me = L.marker([37.872577, -122.261040], { title: "My Position" }).addTo(map);
+        //   var meradius = L.circle([37.872577, -122.261040], {
+        //     color: 'blue',
+        //     fillColor: '#f03',
+        //     fillOpacity: 0.2,
+        //     radius: 50.0
+        // }).addTo(map);  
+        function getFirstLocation() {
+           if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(setFirstPosition);
+           }
+        }
+        function setFirstPosition(position) {
+           var me = L.marker([position.coords.latitude, position.coords.longitude], { title: "My Position" }).addTo(map);
+           map.setView([position.coords.latitude, position.coords.longitude]);
+
+           var meradius = L.circle([position.coords.latitude, position.coords.longitude], {
+                  color: 'blue',
+                fillColor: '#f03',
+                fillOpacity: 0.2,
+                radius: 20
+            }).addTo(map);  
+             //var me = L.marker([position.coords.latitude, position.coords.longitude], { title: "My Position" }).addTo(map);
+            //me.setLatLng([position.coords.latitude, position.coords.longitude]); 
+           // meradius.setLatLng([position.coords.latitude, position.coords.longitude]);                                                                        
+         }
+
+      getFirstLocation();     
+
+      var marker = L.marker([37.872577, -122.261040], { title: "My Moffit181" }).addTo(map);
+      
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        } else {
+           map.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+    function showPosition(position) {
+       me.setLatLng([position.coords.latitude, position.coords.longitude]);
+    } -->
+
+    <!-- function getFormValues(id) {
+      values = {}
+      form = document.getElementById(id);
+      for (var i = 0; i < form.length; i++) {
+        if (form.elements[i].type != "submit") {
+            values[form.elements[i].name] = form.elements[i].value;
+        }
+      }
+      return values;
+    } -->
+
+    <!-- getLocation(); -->
+    <!--</script>-->
+<!--     <script>
+    function getFormValues(id) {
+      values = {}
+      form = document.getElementById(id);
+      for (var i = 0; i < form.length; i++) {
+        if (form.elements[i].type != "submit") {
+            values[form.elements[i].name] = form.elements[i].value;
+        }
+      }
+      return values;
+    }
+    </script> -->
+  
+  </body>
+</html>
